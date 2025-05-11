@@ -13,7 +13,7 @@ public class Punto03 {
         lista.addEnd(7);
         lista.addEnd(8);
 
-     //   lista.imprimirLista();
+        lista.imprimirLista();
 
         lista.deletePares();
 

@@ -19,6 +19,47 @@ public class ListaDoble<T> implements Iterable<T> {
         this.nodoPrevious = null;
         this.nodoNext = null;
     }
+
+    public int getTamanio() {
+        return tamanio;
+    }
+
+    public void setTamanio(int tamanio) {
+        this.tamanio = tamanio;
+    }
+
+    public NodoDoble getNodoPrimero() {
+        return nodoPrimero;
+    }
+
+    public void setNodoPrimero(NodoDoble nodoPrimero) {
+        this.nodoPrimero = nodoPrimero;
+    }
+
+    public NodoDoble getNodoUltimo() {
+        return nodoUltimo;
+    }
+
+    public void setNodoUltimo(NodoDoble nodoUltimo) {
+        this.nodoUltimo = nodoUltimo;
+    }
+
+    public NodoDoble getNodoPrevious() {
+        return nodoPrevious;
+    }
+
+    public void setNodoPrevious(NodoDoble nodoPrevious) {
+        this.nodoPrevious = nodoPrevious;
+    }
+
+    public NodoDoble getNodoNext() {
+        return nodoNext;
+    }
+
+    public void setNodoNext(NodoDoble nodoNext) {
+        this.nodoNext = nodoNext;
+    }
+
     public void addEnd(T valor){
         NodoDoble<T> nodo = new NodoDoble<T>(valor);
         if(nodoPrimero == null){

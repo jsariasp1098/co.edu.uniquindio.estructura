@@ -10,7 +10,7 @@ public class Punto09 {
         lista.addEnd(3);
         lista.addEnd(4);
         lista.addEnd(2);
-        lista.addEnd(3);
+        lista.addEnd(4);
 
         lista.buscar(4);
     }

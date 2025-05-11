@@ -54,7 +54,7 @@ public class ListaSimpleCircular<T> {
             Integer i = 0;
             for (Nodo<T> aux = nodoPrimero; aux != nodoUltimo; aux = aux.getNodoSiguiente()) {
                 if(aux.getValor().equals(comparar)) {
-                    System.out.println(aux.getValor()+ "Posicion: " + i);
+                    System.out.println(aux.getValor()+ " Posicion: " + i);
                 }
                 i++;
             }
