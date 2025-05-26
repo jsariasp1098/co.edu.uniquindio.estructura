@@ -1,4 +1,4 @@
-package org.example.util.doubleList;
+package org.example.structures.doubleList;
 
 public class DoubleNode<T> {
     private DoubleNode nextNode;

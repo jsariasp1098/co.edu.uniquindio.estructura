@@ -1,6 +1,7 @@
 package org.example.model;
 
-import org.example.util.BinaryTree.BinaryTree;
+import org.example.structures.BinaryTree.BinaryTree;
+import org.example.structures.listasSimples.SimpleList;
 
 public class DigitalLibrary {
     private String id;
@@ -10,18 +11,11 @@ public class DigitalLibrary {
     private String email;
     private BinaryTree<Book> catalog;
     private BinaryTree<User> users;
+    private SimpleList<Loan> loans;
+    private SimpleList<Message> messages;
+    private SimpleList<Rating> ratings;
 
     public DigitalLibrary() {
-    }
-
-    public DigitalLibrary(String id, String nameLibrary, String phone, String adrress, String email, BinaryTree<Book> catalog, BinaryTree<User> users) {
-        this.id = id;
-        this.nameLibrary = nameLibrary;
-        this.phone = phone;
-        this.adrress = adrress;
-        this.email = email;
-        this.catalog = catalog;
-        this.users = users;
     }
 
     public String getId() {
@@ -80,16 +74,94 @@ public class DigitalLibrary {
         this.users = users;
     }
 
-    @Override
-    public String toString() {
-        return "DigitalLibrary{" +
-                "id='" + id + '\'' +
-                ", nameLibrary='" + nameLibrary + '\'' +
-                ", phone='" + phone + '\'' +
-                ", adrress='" + adrress + '\'' +
-                ", email='" + email + '\'' +
-                ", catalog=" + catalog +
-                ", users=" + users +
-                '}';
+    public SimpleList<Loan> getLoans() {
+        return loans;
     }
+
+    public void setLoans(SimpleList<Loan> loans) {
+        this.loans = loans;
+    }
+
+    public SimpleList<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(SimpleList<Message> messages) {
+        this.messages = messages;
+    }
+
+    public SimpleList<Rating> getRatings() {
+        return ratings;
+    }
+
+    public void setRatings(SimpleList<Rating> ratings) {
+        this.ratings = ratings;
+    }
+
+    public void addBook(Book book) {
+        if (this.catalog == null) {
+            this.catalog = new BinaryTree<>();
+        }
+        this.catalog.insert(book);
+    }
+
+    public void deleteBook(Book book) {
+        if (this.catalog == null) {
+            throw new NullPointerException("El catalogo es null");
+        }
+        this.catalog.deleteData(book);
+    }
+
+    public void printCatalog() {
+        if(this.catalog==null){
+            throw new NullPointerException("El catalogo es null");
+        }
+        this.catalog.inorder();
+    }
+
+    public void addUser(User user) {
+        if (this.users == null) {
+            this.users = new BinaryTree<>();
+        }
+        this.users.insert(user);
+    }
+
+    public void deleteUser(User user) {
+        if (this.users == null) {
+            throw new NullPointerException("El arbol de usuarios es null");
+        }
+        User userAux = this.users.search(user);
+        if(userAux!=null){
+            this.users.deleteData(user);
+        }else{
+            System.out.println("usuario no existe en el arbol de usuarios");
+        }
+
+    }
+
+    public void updateUser(User user) {
+        if (this.users == null) {
+            throw new NullPointerException("El arbol de usuarios es null");
+        }
+        User userAux = this.users.search(user);
+        if(userAux!=null){
+            userAux.setFirstName(user.getFirstName());
+            userAux.setLastName(user.getLastName());
+            userAux.setEmail(user.getEmail());
+            userAux.setPhone(user.getPhone());
+            userAux.setAddress(user.getAddress());
+            userAux.setIdentificacion(user.getIdentificacion());
+            userAux.setPassword(user.getPassword());
+        }else{
+            throw new NullPointerException("El usuario no existe en el arbol de usuarios");
+        }
+    }
+
+    public void printUsers() {
+        if(this.users==null){
+            throw new NullPointerException("El arbol de usuarios es null");
+        }
+        this.users.inorder();
+    }
+
 }

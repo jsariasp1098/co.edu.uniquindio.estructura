@@ -4,7 +4,7 @@ import org.example.model.enums.Status;
 
 import java.util.List;
 
-public class Book {
+public class Book implements Comparable <Book>{
     private String id;
     private String title;
     private String author;
@@ -93,5 +93,23 @@ public class Book {
                 ", status=" + status +
                 ", ratings=" + ratings +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Book other) {
+        return this.title.compareTo(other.title);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Book)) return false;
+        Book otro = (Book) o;
+        return id.equals(otro.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
     }
 }

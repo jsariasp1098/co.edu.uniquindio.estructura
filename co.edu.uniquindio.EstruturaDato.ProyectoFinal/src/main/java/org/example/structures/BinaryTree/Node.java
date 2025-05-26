@@ -1,4 +1,4 @@
-package org.example.util.BinaryTree;
+package org.example.structures.BinaryTree;
 
 public class Node <T extends Comparable<T>> {
     private T value;

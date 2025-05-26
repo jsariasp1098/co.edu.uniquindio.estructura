@@ -1,4 +1,4 @@
-package org.example.util.BinaryTree;
+package org.example.structures.BinaryTree;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -63,7 +63,7 @@ public class BinaryTree<T extends Comparable<T>> {
         }else {
             inorderRecursive(root.getLeftNode(), listInOrder);
             listInOrder.add(root.getValue());
-            System.out.print(root.getValue() + " ");
+            System.out.println(root.getValue() + " ");
             inorderRecursive(root.getRightNode(), listInOrder);
         }
             return listInOrder;
@@ -101,21 +101,20 @@ public class BinaryTree<T extends Comparable<T>> {
         System.out.print(root.getValue() + " ");
         return listPostOrder;
     }
-    public boolean search ( T valor){
+    public T search ( T valor){
         return searhValueRecursive(root, valor);
     }
 
-    private boolean searhValueRecursive(Node<T> root, T valor) {
+    private T searhValueRecursive(Node<T> root, T value) {
         if (root == null) {
-            return false;
+            return null;
         }
-        if (root.getValue() == valor) {
-            return true;
-        }
-        if (root.getValue().compareTo(valor)>0) {
-            return searhValueRecursive(root.getLeftNode(), valor);
+        if (root.getValue().compareTo(value)==0) {
+            return root.getValue();
+        }else if (root.getValue().compareTo(value)<0) {
+            return searhValueRecursive(root.getLeftNode(), value);
         }else {
-            return searhValueRecursive(root.getRightNode(), valor);
+            return searhValueRecursive(root.getRightNode(), value);
         }
     }
     public int weight() {

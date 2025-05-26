@@ -1,32 +1,32 @@
-package org.example.util.listasSimples;
+package org.example.structures.listasSimples;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class simpleList<T> implements Iterable<T>{
-    private simpleNode<T> firstNode;
-    private simpleNode<T> lastNode;
+public class SimpleList<T> implements Iterable<T>{
+    private SimpleNode<T> firstNode;
+    private SimpleNode<T> lastNode;
     private int size;
 
-    public simpleList() {
+    public SimpleList() {
         this.size = 0;
         this.firstNode = null;
         this.lastNode = null;
     }
 
-    public simpleNode<T> getFirstNode() {
+    public SimpleNode<T> getFirstNode() {
         return firstNode;
     }
 
-    public void setFirstNode(simpleNode<T> firstNode) {
+    public void setFirstNode(SimpleNode<T> firstNode) {
         this.firstNode = firstNode;
     }
 
-    public simpleNode<T> getLastNode() {
+    public SimpleNode<T> getLastNode() {
         return lastNode;
     }
 
-    public void setLastNode(simpleNode<T> lastNode) {
+    public void setLastNode(SimpleNode<T> lastNode) {
         this.lastNode = lastNode;
     }
 
@@ -41,7 +41,7 @@ public class simpleList<T> implements Iterable<T>{
         return size == 0;
     }
     public void addEnd(T value){
-        simpleNode<T> node = new simpleNode<T>(value);
+        SimpleNode<T> node = new SimpleNode<T>(value);
         if(isEmpty()){
             firstNode =  node;
         }else{
@@ -52,7 +52,7 @@ public class simpleList<T> implements Iterable<T>{
         size++;
     }
     public void addFirst (T value){
-        simpleNode<T> node = new simpleNode<T>(value);
+        SimpleNode<T> node = new SimpleNode<T>(value);
         if(isEmpty()){
             firstNode = node;
             lastNode = node;
@@ -67,7 +67,7 @@ public class simpleList<T> implements Iterable<T>{
         if(isEmpty()){
             System.out.println("Lista Vacia\n");
         }else{
-            simpleNode<T> aux = firstNode;
+            SimpleNode<T> aux = firstNode;
             while(aux != null){
                 System.out.printf(aux.getValue() + " ");
                 aux = aux.getNextNode();
@@ -79,7 +79,7 @@ public class simpleList<T> implements Iterable<T>{
             System.out.println("Lista Vacia\n");
         }
         else{
-            for (simpleNode<T> aux = firstNode; aux != null; aux = aux.getNextNode()) {
+            for (SimpleNode<T> aux = firstNode; aux != null; aux = aux.getNextNode()) {
                 System.out.printf(aux.getValue() + " ");
             }
         }
@@ -89,7 +89,7 @@ public class simpleList<T> implements Iterable<T>{
             System.out.println("Lista Vacia\n");
         }else {
             int i = 0;
-            for (simpleNode<T> aux = firstNode; aux != null; aux = aux.getNextNode()) {
+            for (SimpleNode<T> aux = firstNode; aux != null; aux = aux.getNextNode()) {
                 if(i % 2 == 0) {
                     System.out.println(aux.getValue() + " ");
                 }
@@ -100,7 +100,7 @@ public class simpleList<T> implements Iterable<T>{
     public void printRecursiveList(){
         printRecursiveList(firstNode);
     }
-    private void printRecursiveList(simpleNode<T> aux) {
+    private void printRecursiveList(SimpleNode<T> aux) {
         if(aux == null){
             System.out.println("Termine");
         }
@@ -124,7 +124,7 @@ public class simpleList<T> implements Iterable<T>{
         if(size == 1){
             deleteAll();
         }else {
-            simpleNode<T> aux = firstNode;
+            SimpleNode<T> aux = firstNode;
             while(aux.getNextNode() != lastNode){
                 aux = aux.getNextNode();
             }
@@ -138,13 +138,13 @@ public class simpleList<T> implements Iterable<T>{
         lastNode = null;
         size = 0;
     }
-    public simpleList<T> posicionesImpares(){
-        simpleList<T> auxImpares = new simpleList<>();
+    public SimpleList<T> posicionesImpares(){
+        SimpleList<T> auxImpares = new SimpleList<>();
         if(isEmpty()){
              throw new RuntimeException("Lista Vacia");
          }else{
              int i = 0;
-             for (simpleNode<T> aux = firstNode; aux != null; aux = aux.getNextNode()) {
+             for (SimpleNode<T> aux = firstNode; aux != null; aux = aux.getNextNode()) {
                  if(i % 2 != 0) {
                      auxImpares.addEnd(aux.getValue());
                  }
@@ -153,12 +153,12 @@ public class simpleList<T> implements Iterable<T>{
          }
         return auxImpares;
     }
-    public simpleList<T> parValue(){
-        simpleList<T> auxPar = new simpleList<>();
+    public SimpleList<T> parValue(){
+        SimpleList<T> auxPar = new SimpleList<>();
         if(isEmpty()){
             throw new RuntimeException("Lista Vacia");
         }else{
-            for (simpleNode<T> aux = firstNode; aux != null; aux = aux.getNextNode()) {
+            for (SimpleNode<T> aux = firstNode; aux != null; aux = aux.getNextNode()) {
                 if(isPar(aux.getValue())) {
                     auxPar.addEnd(aux.getValue());
                 }
@@ -171,7 +171,7 @@ public class simpleList<T> implements Iterable<T>{
             throw new RuntimeException("Lista Vacia");
         }else{
             Integer i = 0;
-            for (simpleNode<T> aux = firstNode; aux != null; aux = aux.getNextNode()) {
+            for (SimpleNode<T> aux = firstNode; aux != null; aux = aux.getNextNode()) {
                 if(aux.getValue().equals(comparar)) {
                     i ++;
                 }
@@ -186,7 +186,7 @@ public class simpleList<T> implements Iterable<T>{
             while (firstNode != null && isPar(firstNode.getNextNode().getValue())){
                 firstNode = firstNode.getNextNode();
             }
-            simpleNode<T> actual = firstNode;
+            SimpleNode<T> actual = firstNode;
             while(actual.getNextNode() != null){
                 if(isPar(actual.getNextNode().getValue())){
                     actual.setNextNode(actual.getNextNode().getNextNode());
@@ -211,15 +211,15 @@ public class simpleList<T> implements Iterable<T>{
         return new IteradorLista();
     }
 
-    public simpleList<T> joinList(simpleList<T> lista1, simpleList<T> lista2) {
-        simpleList<T> listaUnida = new simpleList<>();
+    public SimpleList<T> joinList(SimpleList<T> lista1, SimpleList<T> lista2) {
+        SimpleList<T> listaUnida = new SimpleList<>();
         if(lista1.isEmpty() && lista2.isEmpty()){
             System.out.println("Listas Vacia\n");
         }else {
-            for (simpleNode<T> aux = lista1.firstNode; aux != null; aux = aux.getNextNode()) {
+            for (SimpleNode<T> aux = lista1.firstNode; aux != null; aux = aux.getNextNode()) {
                 listaUnida.addEnd(aux.getValue());
             }
-            for (simpleNode<T> aux = lista2.firstNode; aux != null; aux = aux.getNextNode()){
+            for (SimpleNode<T> aux = lista2.firstNode; aux != null; aux = aux.getNextNode()){
                 listaUnida.addEnd(aux.getValue());
             }
         }
@@ -227,7 +227,7 @@ public class simpleList<T> implements Iterable<T>{
     }
 
     private class IteradorLista implements Iterator<T> {
-        private simpleNode<T> actual = firstNode;
+        private SimpleNode<T> actual = firstNode;
 
         @Override
         public boolean hasNext() {

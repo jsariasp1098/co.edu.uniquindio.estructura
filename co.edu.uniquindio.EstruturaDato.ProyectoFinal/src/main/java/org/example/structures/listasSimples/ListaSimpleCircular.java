@@ -1,8 +1,8 @@
-package org.example.util.listasSimples;
+package org.example.structures.listasSimples;
 
 public class ListaSimpleCircular<T> {
-    private simpleNode<T> nodoPrimero;
-    private simpleNode<T> nodoUltimo;
+    private SimpleNode<T> nodoPrimero;
+    private SimpleNode<T> nodoUltimo;
     private int tamanio;
 
     public ListaSimpleCircular() {
@@ -11,19 +11,19 @@ public class ListaSimpleCircular<T> {
         this.nodoUltimo = null;
     }
 
-    public simpleNode<T> getNodoPrimero() {
+    public SimpleNode<T> getNodoPrimero() {
         return nodoPrimero;
     }
 
-    public void setNodoPrimero(simpleNode<T> nodoPrimero) {
+    public void setNodoPrimero(SimpleNode<T> nodoPrimero) {
         this.nodoPrimero = nodoPrimero;
     }
 
-    public simpleNode<T> getNodoUltimo() {
+    public SimpleNode<T> getNodoUltimo() {
         return nodoUltimo;
     }
 
-    public void setNodoUltimo(simpleNode<T> nodoUltimo) {
+    public void setNodoUltimo(SimpleNode<T> nodoUltimo) {
         this.nodoUltimo = nodoUltimo;
     }
 
@@ -35,7 +35,7 @@ public class ListaSimpleCircular<T> {
         this.tamanio = tamanio;
     }
     public void addEnd(T valor){
-        simpleNode<T> nodo = new simpleNode<>(valor);
+        SimpleNode<T> nodo = new SimpleNode<>(valor);
         if(isEmpty()){
             nodoPrimero = nodoUltimo = nodo;
             nodo.setNextNode(nodoPrimero);
@@ -52,7 +52,7 @@ public class ListaSimpleCircular<T> {
             throw new RuntimeException("Lista Vacia");
         }else{
             Integer i = 0;
-            for (simpleNode<T> aux = nodoPrimero; aux != nodoUltimo; aux = aux.getNextNode()) {
+            for (SimpleNode<T> aux = nodoPrimero; aux != nodoUltimo; aux = aux.getNextNode()) {
                 if(aux.getValue().equals(comparar)) {
                     System.out.println(aux.getValue()+ " Posicion: " + i);
                 }

@@ -2,7 +2,7 @@ package org.example.model;
 
 import org.example.model.enums.UserType;
 
-public class User extends Person {
+public class User extends Person implements Comparable <User> {
     private String id;
     private String password;
     private Enum<UserType> userType;
@@ -11,21 +11,21 @@ public class User extends Person {
 
     }
 
-    public User(String id, String firstName, String lastName, String email, String phone, String address, String id1, String password, Enum<UserType> userType) {
-        super(id, firstName, lastName, email, phone, address);
+    public User(String identificacion, String firstName, String lastName, String email, String phone, String address, String id1, String password, Enum<UserType> userType) {
+        super(identificacion, firstName, lastName, email, phone, address);
         this.id = id1;
         this.password = password;
         this.userType = userType;
     }
 
 
-    public String getId() {
+    public String getIdentificacion() {
         return id;
     }
 
 
-    public void setId(String id) {
-        this.id = id;
+    public void setIdentificacion(String identificacion) {
+        this.id = identificacion;
     }
 
     public String getPassword() {
@@ -46,10 +46,16 @@ public class User extends Person {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "User{"  + super.toString() +
                 "id='" + id + '\'' +
                 ", password='" + password + '\'' +
                 ", userType=" + userType +
                 '}';
+    }
+
+    @Override
+    public int compareTo(User other) {
+        // Por ejemplo ordenas por id:
+        return this.id.compareTo(other.id);
     }
 }

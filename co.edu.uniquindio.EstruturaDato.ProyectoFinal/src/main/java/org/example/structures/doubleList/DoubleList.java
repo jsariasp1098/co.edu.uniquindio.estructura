@@ -1,4 +1,4 @@
-package org.example.util.doubleList;
+package org.example.structures.doubleList;
 
 
 import java.util.Iterator;

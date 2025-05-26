@@ -1,10 +1,10 @@
-package org.example.util.listasSimples;
+package org.example.structures.listasSimples;
 
-public class simpleNode<T>{
+public class SimpleNode<T>{
     private T value;
-    private simpleNode<T> nextNode;
+    private SimpleNode<T> nextNode;
 
-    public simpleNode(T value) {
+    public SimpleNode(T value) {
         this.value = value;
     }
 
@@ -16,11 +16,11 @@ public class simpleNode<T>{
         this.value = value;
     }
 
-    public simpleNode<T> getNextNode() {
+    public SimpleNode<T> getNextNode() {
         return nextNode;
     }
 
-    public void setNextNode(simpleNode<T> nextNode) {
+    public void setNextNode(SimpleNode<T> nextNode) {
         this.nextNode = nextNode;
     }
 

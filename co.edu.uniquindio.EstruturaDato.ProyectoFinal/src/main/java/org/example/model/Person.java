@@ -1,7 +1,7 @@
 package org.example.model;
 
 public class Person {
-    private String id;
+    private String identificacion;
     private String firstName;
     private String lastName;
     private String email;
@@ -11,8 +11,8 @@ public class Person {
     public Person() {
     }
 
-    public Person(String id, String firstName, String lastName, String email, String phone, String address) {
-        this.id = id;
+    public Person(String identificacion, String firstName, String lastName, String email, String phone, String address) {
+        this.identificacion = identificacion;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -20,12 +20,12 @@ public class Person {
         this.address = address;
     }
 
-    public String getId() {
-        return id;
+    public String getIdentificacion() {
+        return identificacion;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setIdentificacion(String identificacion) {
+        this.identificacion = identificacion;
     }
 
     public String getFirstName() {
@@ -71,7 +71,7 @@ public class Person {
     @Override
     public String toString() {
         return "Person{" +
-                "id='" + id + '\'' +
+                "identificacion='" + identificacion + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
